@@ -1,0 +1,7 @@
+<a>Prima pagina</a>
+<div *ngIf="heroes">{{heroes.name}}</div>
+<div *ngIf="!heroes">no data</div>
+<a routerLink="/newpage" routerLinkActive="active">Newpage</a>
+<router-outlet></router-outlet>
+<button (click) = "loghero()">click me </button>
+<button (click) = "lodashfunc()">lodash test</button>
