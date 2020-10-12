@@ -1,8 +1,18 @@
-<a>Prima pagina esistente</a>
+<h1 class="title">{{title}}</h1>
+<div class="test-button-containter">
+    <div class="test-button">
+        <button mat-raised-button color="primary" class="test-button" (click) = "testinterval()">Test Interval</button>
+    </div>
+    <div class="test-button">
+        <button mat-raised-button color="primary" class="test-button" (click) = "unsubscribe(subscription)">UnSubscribe interval</button>
+    </div>
+    <div class="test-button">
+        <button mat-raised-button color="primary" class="test-button" (click) = "lodashfunc()">lodash test</button>
+    </div>
+</div>
+<div style="padding-top: 200px;">TEST API CALL :</div>
 <div *ngIf="heroes">{{heroes.name}}</div>
-<div *ngIf="!heroes">no data</div>
 <a routerLink="/newpage" routerLinkActive="active">Newpage</a>
 <router-outlet></router-outlet>
-<button (click) = "loghero()">click me </button>
-<button (click) = "lodashfunc()">lodash test</button>
-<div>dfwf3ew</div>
+
+

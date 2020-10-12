@@ -1,0 +1,19 @@
+.title {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.test-button-containter {
+  position: relative;
+  left: 30%;
+}
+
+.test-button {
+  position: relative;
+  padding: 20px;
+  float: left;
+}
+
+.test-button {
+  padding: 30px;
+}

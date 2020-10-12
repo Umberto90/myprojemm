@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { PaginaComponent } from './pagina.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
 
 const appRoutes: Routes = [
   { path: 'newpage', component: PaginaComponent },
@@ -17,10 +19,12 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
+    MatButtonModule,
     RouterModule.forRoot(
       appRoutes,
       //{ enableTracing: true } // <-- debugging purposes only
-    )
+    ),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

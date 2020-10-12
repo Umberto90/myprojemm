@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { AppService } from './app.service';
-import { fromEvent, from, Observable } from 'rxjs';
+import { fromEvent, from, Observable, interval, Subscriber, Subscription, Subscribable } from 'rxjs';
 import { of } from 'rxjs';
-import { throttleTime, map, scan, filter, tap } from 'rxjs/operators';
+import { throttleTime, map, scan, filter, tap, debounceTime } from 'rxjs/operators';
 import { chunk, compact, concat, debounce, difference, forEach, forOwn, isArray, sortedIndex } from 'lodash';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -15,38 +15,54 @@ export class AppComponent {
 
   constructor(private appService: AppService, private http: HttpClient) { }
 
-  title = 'myproject';
+  title = 'My Project';
   heroes = {}
   her = {}
   names = { name: 'umberto', surname: "d'angelo" }
-
-
-  obs = new Observable((subscriber) => {
-    subscriber.next(1)
-    subscriber.next(2)
-    subscriber.next(3)
-    subscriber.next(4)
-    setTimeout(() => {
-      subscriber.next(5);
-      subscriber.complete()
-    }, 5000);
-  }).pipe(
-     filter(data => data > 2),                    //filter Operator
-     map((val) => {return val as number * 2}),    //map operator
-  ).subscribe(data => console.log("data" + data))
-
-
-
-
+  subscription: any
 
 
   ngOnInit() {
     this.getHeroesapi()
+    this.executeoninit()
+  }
+
+  executeoninit() {
+    let obs = new Observable((subscriber) => {
+      subscriber.next(1)
+      subscriber.next(2)
+      subscriber.next(3)
+      subscriber.next(4)
+      setTimeout(() => {
+        subscriber.next(5);
+      }, 5000);
+    }).pipe(
+      filter(data => data > 2),                    //filter Operator
+      map((val) => { return val as number * 2 }),    //map operator
+    ).subscribe(data => console.log(data))
+  }
+
+  testinterval() {
+    const secondsCounter = interval(1000);
+    this.subscription = secondsCounter.pipe(
+      filter(data => data > 5),
+      //debounceTime(5000)
+    ).subscribe(value => console.log(`It's been ${value} seconds since subscribing!`), error => console.log(error));
+  }
+
+  unsubscribe(x: Subscription) {
+    x.unsubscribe()
+    console.log("unsubscribed succesfully!")
   }
 
   loghero() {
     console.log(this.heroes)
 
+  }
+
+  ofoperator() {
+    let a = of(1, 2, 3)
+    a.subscribe(value => console.log(value))
   }
 
   getHeroes(): void {
