@@ -17,6 +17,7 @@ export class AppComponent {
 
   title = 'My Project';
   heroes = {}
+  pepole = {}
   her = {}
   names = { name: 'umberto', surname: "d'angelo" }
   subscription: any
@@ -24,6 +25,7 @@ export class AppComponent {
 
   ngOnInit() {
     this.getHeroesapi()
+    this.getlocalapi()
     this.executeoninit()
   }
 
@@ -83,6 +85,10 @@ export class AppComponent {
       console.log(value.a + value.b);
     });
     console.log(sortedIndex([30, 35, 50], 3))
+  }
+
+  getlocalapi(){
+    this.appService.getLocalApi().subscribe(pepole => console.log(pepole))
   }
 
   getHeroesapi() {

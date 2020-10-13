@@ -11,13 +11,16 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class AppService {
 
   private HeroesbyIdUrl = 'https://www.superheroapi.com/api.php/3846343545384978/23'
+  private urlocalapi = 'http://localhost:3000/url'
 
   constructor(private http: HttpClient) { 
 
     let array = new Array
   }
 
-
+  getLocalApi(): Observable<[{}]> {
+    return this.http.get<[{}]>(this.urlocalapi)
+  }
 
   getHeroesById(): Observable<[{}]> {
     return this.http.get<[{}]>(this.HeroesbyIdUrl)
