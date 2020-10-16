@@ -9,6 +9,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "browser":{
+    "child_process": false
+  }  ,
   "private": true,
   "dependencies": {
     "@angular/animations": "~10.1.4",
@@ -23,6 +26,7 @@
     "@angular/router": "~10.1.4",
     "@types/lodash": "^4.14.161",
     "express": "^4.17.1",
+    "get-project-version": "^1.0.3",
     "lodash-es": "^4.17.15",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

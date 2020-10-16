@@ -22,6 +22,10 @@ export class AppService {
     return this.http.get<[{}]>(this.urlocalapi)
   }
 
+  getCurrentVersionApi(): Observable<[{}]> {
+    return this.http.get<[{}]>(this.urlocalapi)
+  }
+
   getHeroesById(): Observable<[{}]> {
     return this.http.get<[{}]>(this.HeroesbyIdUrl)
   }
